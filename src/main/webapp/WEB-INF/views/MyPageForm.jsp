@@ -32,7 +32,7 @@
 		<div id="container">
 			<h1>My Page</h1>
 		 	<%if(joiner.getPhoto()!=null){ %>	
-			<img src='file/photo/${joiner.photo}' style="width:200px;">
+			<img src='<%=request.getContextPath()%>/file/photo/${joiner.photo}' style="width:200px;">
 		  	<%}%>
 			<p>
 			<table>

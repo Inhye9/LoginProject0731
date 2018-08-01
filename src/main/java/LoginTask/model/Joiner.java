@@ -1,5 +1,10 @@
 package LoginTask.model;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class Joiner {
@@ -9,6 +14,7 @@ public class Joiner {
 	private String birth_year;
 	private String birth_mon;
 	private String birth_day;
+	private String birth;
 	private String gender;
 	private String email;
 	private int phone;
@@ -47,9 +53,19 @@ public class Joiner {
 		this.email = email;
 		this.phone = phone;
 		this.photo = photo;
+		
+		
 	}
 	
-	
+
+	public String getBirth() {
+		String birth = birth_year +"-" + birth_mon +"-" + birth_day;
+		return birth;
+	}
+
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
 
 	public MultipartFile getPhotoFile() {
 		return photoFile;

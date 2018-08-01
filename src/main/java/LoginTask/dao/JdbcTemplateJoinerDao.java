@@ -89,6 +89,17 @@ public class JdbcTemplateJoinerDao {
 		
 	}
 	
+	//JSON
+	public List<Joiner> selectAll(){
+		List<Joiner> memberList = null;
+		String sql = "select * from member";
+		
+		memberList = jdbcTemplate.query(sql, new JoinerRowMapper());
+		
+		return memberList;
+		
+	}
+	
 	
 	
 	

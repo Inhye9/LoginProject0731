@@ -40,7 +40,7 @@
                 <option>中文(简体)</option>
                 <option>中文(台灣)</option>
             </select>
-            <img src="<c:url value="/img/naver.JPG"/>">
+            <img src="<c:url value="/img/rih.JPG"/>">
         </div>
 
         <div id="container">

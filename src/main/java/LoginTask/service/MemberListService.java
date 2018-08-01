@@ -78,22 +78,22 @@ public class MemberListService {
 	// xml/json 파일을 만들기 위한 메서드
 	public List<Joiner> getMemberList2() throws SQLException {
 
-		Connection conn = null;
-		JoinerDao dao = null;
-		try {
+	/*	Connection conn = null;
+		JoinerDao dao = null;*/
+	/*	try {
 
-			conn = ConnectionProvider.getConnection();
+			conn = ConnectionProvider.getConnection();*/
 		/*	dao = JoinerDao.getInstance();*/
 
 			// 전체 게시물 수
-			List<Joiner> memberList = dao.selectAll(conn);
+			List<Joiner> memberList = dao.selectAll();
 
 			return memberList;
 
-		} finally {
+	/*	} finally {
 			JdbcUtil.close(conn);
 		}
-
+*/
 	}
 
 }

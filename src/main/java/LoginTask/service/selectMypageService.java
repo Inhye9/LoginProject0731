@@ -3,10 +3,12 @@ package LoginTask.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import LoginTask.dao.JdbcTemplateJoinerDao;
 import LoginTask.dao.JoinerDao;
+import LoginTask.dao.JoinerInterfaceDao;
 import LoginTask.model.Joiner;
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
@@ -26,13 +28,19 @@ public class selectMypageService {
 	/*@Autowired
 	JoinerDao dao;*/
 	
+	/*@Autowired
+	JdbcTemplateJoinerDao dao;*/
+	
 	@Autowired
-	JdbcTemplateJoinerDao dao;
+	SqlSessionTemplate sqlSessionTemplate;
+	JoinerInterfaceDao dao;
 	
 	//마이페이지 출력 메서드 
 	public Joiner printMypage(String id) throws ServiceException, SQLException{
 		
 		/*Connection conn = null;*/
+		dao = sqlSessionTemplate.getMapper(JoinerInterfaceDao.class);
+		
 		int resultCnt = 0;
 		Joiner joiner = null;
 		

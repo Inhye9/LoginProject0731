@@ -7,10 +7,14 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import LoginTask.dao.JdbcTemplateJoinerDao;
 import LoginTask.dao.JoinerDao;
+import LoginTask.dao.JoinerInterfaceDao;
+import LoginTask.dao.MybatisJoinerDao;
 import LoginTask.model.Joiner;
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
@@ -20,11 +24,21 @@ public class insertJoinerService {
 	/*@Autowired
 	JoinerDao dao;*/
 	
+	/*@Autowired
+	JdbcTemplateJoinerDao dao;*/
+	
+	/*@Autowired
+	MybatisJoinerDao dao;*/
+	
 	@Autowired
-	JdbcTemplateJoinerDao dao;
+	SqlSessionTemplate sqlsessionTemplate;
+	JoinerInterfaceDao dao; //Bean 등록 하지 않기 때문에 @Autowired x. 
 	
 	//데이터 삽입 메서드_회원가입
+	@Transactional
 	public int insertJoiner(Joiner joiner, HttpServletRequest request) throws ServiceException, IllegalStateException, IOException, SQLException{
+		
+		dao = sqlsessionTemplate.getMapper(JoinerInterfaceDao.class);
 		
 		int resultCnt = 0;
 		/*Connection conn = null;*/
@@ -36,6 +50,8 @@ public class insertJoinerService {
 		String uploadUri = "/file/photo";
 		//2. 시스템의 물리적인 경로 정의 
 		String dir = request.getSession().getServletContext().getRealPath(uploadUri);
+		
+		System.out.println(dir);
 		
 		//사용자의 업로드 파일을 물리적으로 저장 
 		if(!joiner.getPhotoFile().isEmpty()){
@@ -56,6 +72,7 @@ public class insertJoinerService {
 			/*JoinerDao dao = JoinerDao.getInstance();*/
 			
 			/*resultCnt = dao.insert(conn, joiner);*/
+			/*resultCnt = dao.insert(joiner);*/
 			resultCnt = dao.insert(joiner);
 			return resultCnt;
 			

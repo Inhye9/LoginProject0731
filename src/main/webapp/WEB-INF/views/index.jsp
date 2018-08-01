@@ -57,6 +57,7 @@
         <a href="<c:url value="/MyPageForm"/>">MyPage</a>
         <a href="<c:url value="/MemberAllPage"/>">MemberList</a>
         <a href="<c:url value="/message/MessageListForm"/>">방명록</a>
+        <a href="<c:url value="/json/MemberAllPage"/>">JsonList</a>
       <% if(id!=null && pwd!=null){ %>
         <a href="<c:url value="/logoutAct"/>">로그아웃</a>
       <%}else{%>
