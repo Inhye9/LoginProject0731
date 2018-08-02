@@ -28,18 +28,18 @@ public class selectMypageService {
 	/*@Autowired
 	JoinerDao dao;*/
 	
-	/*@Autowired
-	JdbcTemplateJoinerDao dao;*/
-	
 	@Autowired
+	JdbcTemplateJoinerDao dao;
+	
+	/*@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
-	JoinerInterfaceDao dao;
+	JoinerInterfaceDao dao;*/
 	
 	//마이페이지 출력 메서드 
 	public Joiner printMypage(String id) throws ServiceException, SQLException{
 		
 		/*Connection conn = null;*/
-		dao = sqlSessionTemplate.getMapper(JoinerInterfaceDao.class);
+		/*dao = sqlSessionTemplate.getMapper(JoinerInterfaceDao.class);*/
 		
 		int resultCnt = 0;
 		Joiner joiner = null;

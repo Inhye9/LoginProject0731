@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="LoginTask.dao.JoinerInterfaceDao">
+
+	<select id="selectOne" resultType="LoginTask.model.Joiner">
+	select * from member where id = #{id}
+	</select>
+
+	<insert id="insert" parameterType="LoginTask.model.Joiner">
+	insert into member (id, pwd, name, birth, gender, email, phone, photo) values( #{id} , #{pwd} , #{name}, #{birth}, #{gender}, #{email}, #{phone}, #{photo})
+	</insert>
+	
+	<!-- <select id="selectCount" resultType="Integer">
+	select count(*) from member
+	</select>
+	
+	<select id="selectList" resultType="LoginTask.model.Joiner">
+	 select id, pwd, name, birth, gender, email, phone, photo  + 
+					"from (select rownum rnum, id, pwd, name, birth, gender, email, phone, photo " + 
+					"      from(select *  " + 
+					"           from member m " + 
+					"           order by m.name desc) " + 
+					"       where rownum <= ?) " + 
+					"where rnum >= ?";
+	</select> -->
+</mapper>

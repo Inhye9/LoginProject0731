@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="LoginTask.mapper.mybatis.JoinerMapper">
+
+	<select id="selectById"
+	resultType="LoginTask.model.Joiner">
+	select * from member where id = #{id}
+	</select>
+
+	<insert id="insertJoiner" parameterType="LoginTask.model.Joiner">
+	insert into member (id, pwd, name, gender, email, phone, photo)values( #{id} , #{pwd} , #{name}, #{gender}, #{email}, #{phone}, #{photo})
+	</insert>
+	
+	<!--  str_to_date(#{birth}, 'YYYY-MM-DD' -->
+	<!--  TO_DATE(#{birth}, 'YYYY-MM-DD') -->
+	<!--  TO_DATE(#{birth_year}#{birth_mon}#{birth_day}, 'YYYY-MM-DD') -->
+	
+	<!-- useGeneratedKeys="true" keyProperty="MESSAGE_ID" : sequence 값 발생 구문   -> seq.nextVal -->
+
+</mapper>
