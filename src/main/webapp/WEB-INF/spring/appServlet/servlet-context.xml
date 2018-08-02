@@ -26,11 +26,15 @@
 
 
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<!-- 18/08/02 Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:order="2">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	<!-- 18/08/02 Xml/Json/pdf/xls 변환 -->
+	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver"
+    p:order="1" />
+	
 	
 	<beans:bean id="JoinerDao" class="LoginTask.dao.JoinerDao"/>
 	<beans:bean id="loginService" class="LoginTask.service.loginService"/>
@@ -56,7 +60,7 @@
 	<beans:bean id="jdbcTemplateJoinerDao" class="LoginTask.dao.JdbcTemplateJoinerDao"/>
 	<beans:bean id="jdbcTemplateMessageDao" class="LoginTask.dao.JdbcTemplateMessageDao"/>
 	
-	<!-- MybatisDao 빈 등록 -->
+	<!-- 18/08/01 MybatisDao 빈 등록 -->
 	<beans:bean id="MybatisJoinerDao" class="LoginTask.dao.MybatisJoinerDao"/>
 	
 	
@@ -78,7 +82,7 @@
 		</beans:property>
 	</beans:bean>
 	
-	<!-- DB연동을 위한 Datasource 빈 등록 : JdbcTemplate에 주입, Mybatis 설정 -->
+	<!-- 18/08/01 DB연동을 위한 Datasource 빈 등록 : JdbcTemplate에 주입, Mybatis 설정 -->
 	<beans:bean
 		id="dataSource"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -88,17 +92,22 @@
 		<beans:property name="password" value="1234"/>
 	</beans:bean>
 	
-	<!-- Mybatis 연동 설정 -->
+	<!-- 18/08/01 Mybatis 연동 설정 -->
 	<beans:bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="mapperLocations" value="classpath:LoginTask/mapper/mybatis/*.xml" />
 	</beans:bean>
 	
-	<!-- SesseionTemplate 클래스 등록 -->
+	<!-- 18/08/01 SesseionTemplate 클래스 등록 -->
 	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg ref="sqlSessionFactoryBean"/>  <!-- 생성자 필수 -->
 	</beans:bean>
 	
+	<!-- 18/08/02 Xls 파일 만들기 -->
+	<beans:bean id="joinerListXmlView" class="LoginTask.convertView.joinerListXmlView"/>
+	<!-- 18/08/02 Pdf 파일 만들기 -->
+	<beans:bean id="joinerListPdfView" class="LoginTask.convertView.JoinerListPdfView"/>
+
 	<interceptors>
 		<interceptor>
 			<mapping path="/**"/>
@@ -112,5 +121,6 @@
 			<beans:bean class="LoginTask.Interceptor.AuthCheckInterceptor"></beans:bean>
 		</interceptor>
 	</interceptors>
+	
 	
 </beans:beans>

@@ -5,7 +5,12 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
 import org.springframework.web.multipart.MultipartFile;
+
 
 public class Joiner {
 	private String id;
@@ -15,6 +20,7 @@ public class Joiner {
 	private String birth_mon;
 	private String birth_day;
 	private String birth;
+	private String birth2;
 	private String gender;
 	private String email;
 	private int phone;
@@ -25,6 +31,22 @@ public class Joiner {
 		
 	}
 	
+	
+	public Joiner(String id, String pwd, String name, String birth, String gender, String email, int phone,
+			String photo) {
+		super();
+		this.id = id;
+		this.pwd = pwd;
+		this.name = name;
+		this.birth = birth;
+		this.gender = gender;
+		this.email = email;
+		this.phone = phone;
+		this.photo = photo;
+	}
+
+
+
 	public Joiner(String id, String pwd, String name, String birth_year, String birth_mon, String birth_day,
 			String gender, String email, int phone) {
 		super();
@@ -57,9 +79,20 @@ public class Joiner {
 		
 	}
 	
+	
+	
+	public String getBirth2() {
+		String birth2 = birth_year +"-" + birth_mon +"-" + birth_day;
+		return birth2;
+	}
+
+
+	public void setBirth2(String birth2) {
+		this.birth2 = birth2;
+	}
+
 
 	public String getBirth() {
-		String birth = birth_year +"-" + birth_mon +"-" + birth_day;
 		return birth;
 	}
 

@@ -1,18 +1,17 @@
 package LoginTask.service;
 
-import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import LoginTask.dao.JdbcTemplateJoinerDao;
-import LoginTask.dao.JoinerDao;
+import LoginTask.model.ConvertJoiner;
 import LoginTask.model.Joiner;
 import LoginTask.model.MemberListView;
-import jdbc.JdbcUtil;
-import jdbc.connection.ConnectionProvider;
 
 public class MemberListService {
 
@@ -75,7 +74,7 @@ public class MemberListService {
 	}
 	
 
-	// xml/json 파일을 만들기 위한 메서드
+	// ajax로 xml/json 파일을 만들기 위한 메서드
 	public List<Joiner> getMemberList2() throws SQLException {
 
 	/*	Connection conn = null;
@@ -95,5 +94,19 @@ public class MemberListService {
 		}
 */
 	}
+	
+	//Xml 및 Json 파일로 변환하기 위해 만듬
+	public List<ConvertJoiner> getConvertedMemberList() throws SQLException {
+		List<ConvertJoiner> memberList = dao.convertedSelectAll();
+		return memberList;
+	}
+
+
+	public List<ConvertJoiner> actConvertedMemberList(String from, String to) throws ParseException {
+		List<ConvertJoiner> memberList = dao.convertedListbyBirth(from, to);
+		return memberList;
+	}
+	
+	
 
 }

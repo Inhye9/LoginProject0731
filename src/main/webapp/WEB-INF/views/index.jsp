@@ -57,12 +57,13 @@
         <a href="<c:url value="/MyPageForm"/>">MyPage</a>
         <a href="<c:url value="/MemberAllPage"/>">MemberList</a>
         <a href="<c:url value="/message/MessageListForm"/>">방명록</a>
-        <a href="<c:url value="/json/MemberAllPage"/>">JsonList</a>
+        <a href="<c:url value="/joinerList/list.xml"/>">회원리스트 파일</a>
       <% if(id!=null && pwd!=null){ %>
         <a href="<c:url value="/logoutAct"/>">로그아웃</a>
       <%}else{%>
         <a href="<c:url value="/regi/RegisterFirst"/>">회원가입</a>
         <a href="<c:url value="/login/loginForm"/>">로그인</a>
+
      <%}%>
      
      

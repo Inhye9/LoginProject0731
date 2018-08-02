@@ -31,13 +31,14 @@ public class MypageController {
 		String id = (String)request.getSession(true).getAttribute("id");
 		
 		if(id!=null) {
-			
+
 		joiner.setId(selectMypageService.printMypage(id).getId());
 		joiner.setPwd(selectMypageService.printMypage(id).getPwd());
 		joiner.setName(selectMypageService.printMypage(id).getName());
-		joiner.setBirth_year(selectMypageService.printMypage(id).getBirth_year());
+	/*	joiner.setBirth_year(selectMypageService.printMypage(id).getBirth_year());
 		joiner.setBirth_mon(selectMypageService.printMypage(id).getBirth_mon());
-		joiner.setBirth_day(selectMypageService.printMypage(id).getBirth_day());
+		joiner.setBirth_day(selectMypageService.printMypage(id).getBirth_day());*/
+		joiner.setBirth(selectMypageService.printMypage(id).getBirth());
 		joiner.setGender(selectMypageService.printMypage(id).getGender());
 		joiner.setEmail(selectMypageService.printMypage(id).getEmail());
 		joiner.setPhone(selectMypageService.printMypage(id).getPhone());

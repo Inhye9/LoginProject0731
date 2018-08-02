@@ -4,18 +4,18 @@
 <mapper namespace="LoginTask.dao.JoinerInterfaceDao">
 
 	<select id="selectOne" resultType="LoginTask.model.Joiner">
-	select * from member where id = #{id}
+	select id, pwd, name, TO_Char(birth, 'yyyy-mm-dd') as birth, gender, email, phone, photo from member where id = #{id}
 	</select>
 
 	<insert id="insert" parameterType="LoginTask.model.Joiner">
-	insert into member (id, pwd, name, birth, gender, email, phone, photo) values( #{id} , #{pwd} , #{name}, #{birth}, #{gender}, #{email}, #{phone}, #{photo})
+	insert into member (id, pwd, name, birth, gender, email, phone, photo) values( #{id} , #{pwd} , #{name}, #{birth2}, #{gender}, #{email}, #{phone}, #{photo})
 	</insert>
 	
-	<!-- <select id="selectCount" resultType="Integer">
+	<select id="selectCount" resultType="Integer">
 	select count(*) from member
 	</select>
 	
-	<select id="selectList" resultType="LoginTask.model.Joiner">
+	<!-- <select id="selectList" resultType="LoginTask.model.Joiner">
 	 select id, pwd, name, birth, gender, email, phone, photo  + 
 					"from (select rownum rnum, id, pwd, name, birth, gender, email, phone, photo " + 
 					"      from(select *  " + 

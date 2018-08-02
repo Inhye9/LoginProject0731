@@ -26,6 +26,42 @@
 
 	<dependencies>
 
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.5</version>
+		</dependency>
+
+
+		<!-- PDF View 처리 -->
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+			<version>2.1.7</version>
+			<exclusions>
+				<exclusion>
+					<groupId>bouncycastle</groupId>
+					<artifactId>bcmail-jdk14</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>bouncycastle</groupId>
+					<artifactId>bcprov-jdk14</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>bouncycastle</groupId>
+					<artifactId>bctsp-jdk14</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.9</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
 		<dependency>
 			<groupId>org.mybatis</groupId>

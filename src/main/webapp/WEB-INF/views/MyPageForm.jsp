@@ -53,7 +53,7 @@
 
 				<tr>
 					<td>생년월일</td>
-					<td>${joiner.birth_year} / ${joiner.birth_mon} / ${joiner.birth_day}</td>
+					<td>${joiner.birth}</td>
 				</tr>
 
 				<tr>
