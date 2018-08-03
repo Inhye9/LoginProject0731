@@ -1,9 +1,14 @@
 package LoginTask.service;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -37,11 +42,13 @@ public class loginService {
 	SqlSessionTemplate sqlSessionTemplate;
 	JoinerInterfaceDao dao;
 	
+	
 	// 로그인 확인 메서드
-	public int login(String id, String pwd) throws ServiceException, SQLException{
+	public int login(String id, String pwd) throws ServiceException, SQLException, MessagingException, IOException{
 		/*Connection conn = null;*/
 		dao = sqlSessionTemplate.getMapper(JoinerInterfaceDao.class);
 		int resultCnt = 0;
+		HttpServletResponse response = null;
 
 		/*try {*/
 			/*conn = ConnectionProvider.getConnection();*/
@@ -54,8 +61,19 @@ public class loginService {
 				//1.입력 비밀번호가 db의 비밀번호가 같다면
 				if (joiner.getPwd().equals(pwd)) {		
 					
-					resultCnt = 1;
-					
+					if(joiner.getConfirm()!=null) {
+						if(joiner.getConfirm().equals("Yes")) {
+							System.out.println(joiner.getConfirm() +"1");
+							resultCnt = 1;
+						}else {
+							System.out.println(joiner.getConfirm() +"2");
+							resultCnt = 1;
+						}
+					}else {
+						System.out.println(joiner.getConfirm() +"2");
+						resultCnt = 4;
+					}
+
 				//2.입력 비밀번호가 db의 비밀번호가 같지 않다면
 				}else {
 					resultCnt = 2;

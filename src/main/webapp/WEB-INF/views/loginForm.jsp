@@ -54,7 +54,9 @@
                 
               <input type="submit" value="로그인">
               <input type="checkbox" id="remember" name="remember" value="remember"> 
-              <label for="remember">아이디 저장</label>
+              <label for="remember">아이디 저장</label><br>
+              <label><a href="<c:url value="/mail/tempPassword"/>">임시비밀번호</a></label>
+              
             </form>
         </div>
     </div>

@@ -23,6 +23,7 @@ public class Joiner {
 	private String birth2;
 	private String gender;
 	private String email;
+	private String confirm;
 	private int phone;
 	private String photo;	//DB에 입력하기 위한 변수
 	private MultipartFile photoFile;  //파일 업로드 처리를 위한 변수
@@ -81,6 +82,16 @@ public class Joiner {
 	
 	
 	
+	public String getConfirm() {
+		return confirm;
+	}
+
+
+	public void setConfirm(String confirm) {
+		this.confirm = confirm;
+	}
+
+
 	public String getBirth2() {
 		String birth2 = birth_year +"-" + birth_mon +"-" + birth_day;
 		return birth2;

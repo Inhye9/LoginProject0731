@@ -107,6 +107,27 @@
 	<beans:bean id="joinerListXmlView" class="LoginTask.convertView.joinerListXmlView"/>
 	<!-- 18/08/02 Pdf 파일 만들기 -->
 	<beans:bean id="joinerListPdfView" class="LoginTask.convertView.JoinerListPdfView"/>
+	
+	<!-- 18/08/03 메일 발송을 위한 JavaMailSenderImpl 빈 설정 -->
+    <beans:bean id="mailSender"
+        class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <beans:property name="host" value="smtp.gmail.com" />
+        <beans:property name="port" value="587" /><!-- 465 or 25 -->
+        <beans:property name="username" value="ryuinhye9501@gmail.com" />
+        <beans:property name="password" value="dangerouswlfkfak4885" />
+        <beans:property name="defaultEncoding" value="utf-8" />
+        <beans:property name="javaMailProperties">
+            <beans:props>
+                <beans:prop key="mail.transport.protocol">smtp</beans:prop>
+                <beans:prop key="mail.smtp.auth">true</beans:prop>
+                <beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
+                <beans:prop key="mail.debug">true</beans:prop>
+            </beans:props>
+        </beans:property>
+    </beans:bean>
+	
+	<!-- 18/08/03 메일 발송을 위한 MailingService 빈 설정 -->
+	<beans:bean id="MailingService" class="LoginTask.service.MailingService" />
 
 	<interceptors>
 		<interceptor>
@@ -118,6 +139,7 @@
 			<exclude-mapping path="/resources/**"/>
 			<exclude-mapping path="/css/**"/>
 			<exclude-mapping path="/img/**"/>
+			<exclude-mapping path="/mail/**"/>
 			<beans:bean class="LoginTask.Interceptor.AuthCheckInterceptor"></beans:bean>
 		</interceptor>
 	</interceptors>

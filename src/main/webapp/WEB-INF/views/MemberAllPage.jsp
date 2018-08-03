@@ -30,6 +30,7 @@
 <body>
 
 	<div id="containAll">
+	
 
 		<div id="container">
 			<h1>모든 회원정보 보기</h1>
@@ -44,6 +45,7 @@
 			<%
 				} else {
 			%>
+	 		<input type="button" id="XMLBtn" onclick="location.href='<c:url value="/joinerList/list.xml"/>'" value="XML">
 
 			<table>
 				<tr>
