@@ -157,7 +157,6 @@ public class MailingService {
 		
 		dao = sqlSessionTemplate.getMapper(JoinerInterfaceDao.class);
 		Joiner joiner;
-		HttpServletRequest request = null;
 		
 		boolean resultB = false;
 		
@@ -167,7 +166,6 @@ public class MailingService {
 		if(joiner!=null) {
 			if(joiner.getPwd().equals(prePw)) {
 				joiner.setPwd(pwd);
-				request.getSession(true).setAttribute("pwd", pwd);
 				dao.updateTempPwd(id, pwd);
 				
 				resultB = true;

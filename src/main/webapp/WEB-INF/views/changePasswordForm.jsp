@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="<%=request.getContextPath()%>/mail/tempPassword" method="post">
+<form action="<%=request.getContextPath()%>/pwd/changePassword" method="post">
 	<table>
 		<tr>
 			<td>현재 비밀번호</td>

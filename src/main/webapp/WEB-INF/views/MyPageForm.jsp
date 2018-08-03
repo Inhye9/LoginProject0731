@@ -72,9 +72,9 @@
 				</tr>
 
 				<tr>
-					<td colspan="2"><input type="button" value="비밀번호 변경하기"
+					<td ><input type="button" value="비밀번호 변경하기"
 						onclick="location.href='<c:url value="/pwd/changePassword"/>'" /></td>
-					<td colspan="2"><input type="button" value="홈으로 가기"
+					<td colspan=""><input type="button" value="홈으로 가기"
 						onclick="location.href='indexHome'" /></td>
 				</tr> 
 			</table>

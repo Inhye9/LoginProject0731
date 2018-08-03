@@ -66,8 +66,8 @@ int resultCnt = (int)request.getAttribute("resultCntTmp");
 		    </tr>
 		    
 		     <tr>
-		        <td colspan="2" style="text-align: center;"><input type="button" value="인증메일 발송하기" onclick="location.href='<c:url value="/mail/RegiConfirmMail/${joiner.id}"/>'"></td>
-		        <td colspan="2" style="text-align: center;"><input type="button" value="로그인" onclick="location.href='<c:url value="/login/loginForm"/>'"></td>
+		        <td colspan="" style="text-align: center;"><input type="button" value="인증메일 발송하기" onclick="location.href='<c:url value="/mail/RegiConfirmMail/${joiner.id}"/>'"></td>
+		        <td colspan="" style="text-align: center;"><input type="button" value="로그인" onclick="location.href='<c:url value="/login/loginForm"/>'"></td>
 		    </tr>
 		 </table>
 	</div>
