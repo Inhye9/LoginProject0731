@@ -83,14 +83,25 @@
 	</beans:bean>
 	
 	<!-- 18/08/01 DB연동을 위한 Datasource 빈 등록 : JdbcTemplate에 주입, Mybatis 설정 -->
-	<beans:bean
+	<!-- <beans:bean
 		id="dataSource"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		
 		<beans:property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
 		<beans:property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+		<beans:property name="jdbcUrl" value="jdbc:mysql://openproject.cbtptmkk8dep.ap-northeast-2.rds.amazonaws.com/openproject?characterEncoding=utf-8"/>
 		<beans:property name="user" value="student"/>
 		<beans:property name="password" value="1234"/>
-	</beans:bean>
+	</beans:bean> -->
+	
+	<beans:bean
+		id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource"
+		p:driverClassName="com.mysql.jdbc.Driver"
+		p:url="jdbc:mysql://openproject.cbtptmkk8dep.ap-northeast-2.rds.amazonaws.com:3306/openproject?characterEncoding=utf8"
+		p:username="master"
+		p:password="11111111"
+		/>
 	
 	<!-- 18/08/01 Mybatis 연동 설정 -->
 	<beans:bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">

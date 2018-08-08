@@ -63,12 +63,13 @@ public class JdbcTemplateJoinerDao {
 	public List<Joiner> selectList(int firstRow, int endRow) {
 
 		List<Joiner> memberList = null;
-		String sql = "select id, pwd, name, birth, gender, email, phone, photo "
+		String sql = "select * from member order by id desc limit ?,?";
+/*		String sql = "select id, pwd, name, birth, gender, email, phone, photo "
 				+ "from (select rownum rnum, id, pwd, name, birth, gender, email, phone, photo "
 				+ "      from(select *  " + "           from member m " + "           order by m.name desc) "
-				+ "       where rownum <= ?) " + "where rnum >= ?";
+				+ "       where rownum <= ?) " + "where rnum >= ?";*/
 
-		memberList = jdbcTemplate.query(sql, new JoinerRowMapper(), endRow, firstRow);
+		memberList = jdbcTemplate.query(sql, new JoinerRowMapper(),firstRow, endRow);
 
 		return memberList;
 

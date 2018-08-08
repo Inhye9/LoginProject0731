@@ -45,12 +45,15 @@
 			<%
 				} else {
 			%>
-	 		<input type="button" id="XMLBtn" onclick="location.href='<c:url value="/joinerList/list.xml"/>'" value="XML">
+	 		<%-- <input type="button" id="XMLBtn" onclick="location.href='<c:url value="/joinerList/pdf"/>'" value="PDF">
+	 		<input type="button" id="XMLBtn" onclick="location.href='<c:url value="/joinerList/xls"/>'" value="EXCEL">  --%>
+			<input type="button" id="XMLBtn" onclick="location.href='<c:url value="/joinerList/list.xml"/>'" value="XML">
+			<input type="button" id="XMLBtn" onclick="location.href='<c:url value="/joinerList/list.json"/>'" value="JSON">
 
 			<table>
 				<tr>
 					<th>아이디</th>
-					<th>비밀번호</th>
+					<!-- <th>비밀번호</th> -->
 					<th>이름</th>
 					<th>생년월일</th>
 					<th>성별</th>
@@ -63,9 +66,9 @@
 				%>
 				<tr>
 					<td><%=joiner.getId()%></td>
-					<td><%=joiner.getPwd()%></td>
+				<%-- 	<td><%=joiner.getPwd()%></td> --%>
 					<td><%=joiner.getName()%></td>
-					<td><%=joiner.getBirth_year()%>/<%=joiner.getBirth_mon()%>/<%=joiner.getBirth_day()%></td>
+					<td><%=joiner.getBirth() %></td>
 					<td><%=joiner.getGender()%></td>
 					<td><%=joiner.getEmail()%></td>
 					<td><%=joiner.getPhone()%></td>

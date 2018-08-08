@@ -25,6 +25,16 @@
 	</repositories>
 
 	<dependencies>
+	
+	
+		<!-- 08/08 MYSQL 연결 -->
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.44</version>
+		</dependency>
+
 
 		<!-- 08/03 메일발송을 위한 라이브러리 설정 시작 -->
 		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
@@ -147,6 +157,7 @@
 			<artifactId>commons-dbcp2</artifactId>
 			<version>2.4.0</version>
 		</dependency>
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

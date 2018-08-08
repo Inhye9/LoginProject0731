@@ -92,7 +92,7 @@
             
                 <label for="email">본인 확인 이메일</label>
                 <div id="email" class="box">
-                    <input type="text" name="email" placeholder="선택입력"  class="input">
+                    <input type="text" name="email" placeholder="필수입력"  class="input">
                 </div>
                 <p id="redCheck_email" class="redCheck"></p>
  

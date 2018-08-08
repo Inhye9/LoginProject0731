@@ -67,7 +67,7 @@ public class loginService {
 							resultCnt = 1;
 						}else {
 							System.out.println(joiner.getConfirm() +"2");
-							resultCnt = 1;
+							resultCnt = 4;
 						}
 					}else {
 						System.out.println(joiner.getConfirm() +"2");

@@ -3,9 +3,11 @@ package LoginTask.messageService;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import LoginTask.dao.JdbcTemplateMessageDao;
+import LoginTask.dao.JoinerInterfaceDao;
 import LoginTask.dao.MessageDao;
 import LoginTask.model.Message;
 import LoginTask.service.ServiceException;
@@ -17,18 +19,23 @@ public class InsertMessageService {
 	/*@Autowired
 	MessageDao dao;*/
 	
+/*	@Autowired
+	JdbcTemplateMessageDao dao;*/
+	
 	@Autowired
-	JdbcTemplateMessageDao dao;
+	SqlSessionTemplate sqlsessionTemplate;
+	JoinerInterfaceDao dao;
 	
 	//방명록 삽입 메서드 
 	public int write(Message message) throws ServiceException{
 		
+		dao = sqlsessionTemplate.getMapper(JoinerInterfaceDao.class);
 		/*Connection conn = null;*/
 		int resultCnt = 0;
 		
 		System.out.println("입력 전 message_id : " + message.getMessage_id());
 		
-		resultCnt = dao.insert(message);
+		resultCnt = dao.insertMessage(message);
 		
 		System.out.println("입력 후 message_id : " + message.getMessage_id());
 		/*try {
